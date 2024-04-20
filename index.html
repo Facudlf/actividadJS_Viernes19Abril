@@ -25,40 +25,20 @@
         <th style="width: 40%">IdArticuloFamilia</th>
         <th style="width: 60%">Nombre</th>
       </tr>
-
       <tbody id="contenidoTabla"></tbody>
     </table>
+    <button onclick="cargarGrilla()">Cargar Tabla</button>
+    <h2>Paises</h2>
+    <hr />
+    <table class="table table-bordered table-striped">
+      <tr>
+        <th style="width: 33%">NombrePais</th>
+        <th style="width: 33%">Poblacion</th>
+        <th style="width: 33%">Moneda</th>
+      </tr>
+      <tbody id="contenidoTablaPais"></tbody>
+    </table>
+    <button onclick="cargarPais()">Cargar Pais</button>
   </body>
   <br />
-  <button onclick="cargarGrilla()">Cargar Tabla</button>
-  
-
-  <script>
-    function cargarGrilla() {
-      //alert('cargando grilla desde codigo en html...');
-
-      fetch('https://labsys.frc.utn.edu.ar/dds-express/api/articulosfamilias')
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          // Aquí puedes hacer cualquier manipulación o uso de los datos obtenidos
-          let contenido = "";
-          for(let i=0;i<data.length;i++)
-          {
-              contenido += ` <tr>
-           <td>${data[i].IdArticuloFamilia}</td>
-           <td>${data[i].Nombre}</td>
-         </tr>`
-
-          }
-
-          document.getElementById('contenidoTabla').innerHTML = contenido;
-
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-
-    }
-  </script>
 </html>
